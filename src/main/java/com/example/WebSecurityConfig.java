@@ -15,29 +15,29 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests().antMatchers("/").permitAll().antMatchers("/course/**").hasRole("ADMIN")
-				.antMatchers("/student/**").hasAnyRole("USER","ADMIN").anyRequest().authenticated().and().formLogin()
+				.antMatchers("/student/**").hasRole("USER").anyRequest().authenticated().and().formLogin()
 				.loginPage("/login").permitAll().and().logout().permitAll();
 	}
-
 	// @Autowired
-	// public void configureGlobal (AuthenticationManagerBuilder auth) throws
+	// public void configureGlobal(AuthenticationManagerBuilder auth)throws
 	// Exception
 	// {
-	// auth.inMemoryAuthentication ()
+	// auth.inMemoryAuthentication()
 	// .withUser("user").password("password")
 	// .roles("USER");
-	//
-	// auth.inMemoryAuthentication ()
+	// auth.inMemoryAuthentication()
 	// .withUser("admin").password("admin")
 	// .roles("ADMIN");
+	//
 	// }
+
 	@Autowired
 	DataSource dataSource;
 
 	@Autowired
 	public void configAuthentication(AuthenticationManagerBuilder auth) throws Exception {
 		auth.jdbcAuthentication().dataSource(dataSource)
-				.usersByUsernameQuery("select username,password,enabled from users where username =?")
-				.authoritiesByUsernameQuery("select username, role from user_roles where username =?");
+				.usersByUsernameQuery("select username,password,enabled from users where username=?")
+				.authoritiesByUsernameQuery("select username, role from user_roles where username=?");
 	}
 }
