@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Implementation-Title: Tutorial8_1406623663
+Implementation-Version: 0.0.1-SNAPSHOT
+Built-By: reitasya.devina
+Implementation-Vendor-Id: com.example
+Build-Jdk: 1.8.0_144
+Implementation-URL: http://projects.spring.io/spring-boot/Tutorial8_14
+ 06623663/
+Created-By: Maven Integration for Eclipse
+Implementation-Vendor: Pivotal Software, Inc.
+
